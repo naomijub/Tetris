@@ -1,0 +1,49 @@
+package tetris.game;
+
+/**
+ * naomijub 
+ * Based on http://zetcode.com/tutorials/javagamestutorial/tetris/
+ */
+
+import java.awt.BorderLayout;
+import java.awt.*;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.*;
+
+public class App 
+{
+    JLabel statusbar;
+    JFrame frame;
+    
+    public App(){
+    	
+    	frame = new JFrame();
+    	statusbar = new JLabel(" 0");
+    	frame.add(statusbar, BorderLayout.SOUTH);
+    	Board board = new Board(this);
+    	statusbar.add(board);
+    	board.start();
+    	
+    	frame.setSize(201, 401);
+    	statusbar.setSize(200, 400);
+    	frame.setTitle("Tetris Power");
+    	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+    
+    public JLabel getStatusBar(){
+    	return statusbar;
+    }
+	
+    public JFrame getFrame(){
+    	return frame;
+    }
+
+	public static void main( String[] args )
+    {
+        App game = new App();
+        game.getFrame().setLocationRelativeTo(null);
+        game.getFrame().setVisible(true);
+    }
+}
